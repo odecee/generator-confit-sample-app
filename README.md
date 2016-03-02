@@ -22,7 +22,7 @@
 - `npm run build:dev`: Create a development build using Webpack
 - `npm run build:prod`: Create a production build using Webpack
 - `npm run build:serve`: Generate production build and serve on **https://localhost:3000**
-- `npm run dev`: Run project in development mode (verify code, create dev build into [dev/](dev/) folder, serve on **https://localhost:3000**, watch for changes and reload the browser automatically)
+- `npm run dev`: Run project in development mode (verify code, create dev build into dev/ folder, serve on **https://localhost:3000**, watch for changes and reload the browser automatically)
 - `npm run serve:prod`: Run a production server using grunt-connect on **https://localhost:3000**
 - `npm start`: Alias for `npm run dev` task
 - `npm test`: Alias for `npm run test:unit` task
