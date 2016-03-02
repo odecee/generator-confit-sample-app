@@ -26,7 +26,7 @@
 - `npm run serve:prod`: Run a production server using grunt-connect on **https://localhost:3000**
 - `npm start`: Alias for `npm run dev` task
 - `npm test`: Alias for `npm run test:unit` task
-- `npm run test:browser`: Run browser tests against the DEVELOPMENT web server (the server **must** be running)
+- `npm run test:browser`: Run browser tests against the *development* web server (the development server **must** be running)
 - `npm run test:unit`: Run unit tests whenever JS code changes, with code coverage
 - `npm run test:unit:debug`: Run unit tests in a browser to make debugging easier (no code coverage)
 - `npm run test:unit:once`: Run unit tests once
@@ -59,7 +59,7 @@ Additionally, the **currently-generated** configuration can be extended in the f
 
 - The task configuration is defined in [package.json](package.json). It is possible to change the task definitions to add your own sub-tasks.
 - The `buildJS.vendorScripts` array in [confit.json](confit.json) is designed to be edited manually. This property should contain NPM module names and/or references to JavaScript files (files must start with `./`). For example: `vendorScripts: ['jquery', './module/path/to/jsFile.js', 'angular2/core',  ...]`
-- The `entryPoint.entryPoints` object in [confit.json](confit.json) is designed to be edited manually. It represents the starting-point(s) of the application (like a `main()` function). Normally an application has one entry point, but it is possible to have more than one. `entryPoint.entryPoints` must have at-least property (e.g. `property: [file]`), where `file` is a list of NPM module names and/or references to JavaScript files (file references must start with `./`);
+- The `entryPoint.entryPoints` object in [confit.json](confit.json) is designed to be edited manually. It represents the starting-point(s) of the application (like a `main()` function). Normally an application has one entry point, but it is possible to have more than one. `entryPoint.entryPoints` must have at-least one property (e.g. `property: [file]`), where `file` is a list of NPM module names and/or references to JavaScript files (file references must start with `./`);
 - `npm start` can be extended by modifying [config/webpack/dev.webpack.config.js](config/webpack/dev.webpack.config.js) and [config/webpack/prod.webpack.config.js](config/webpack/prod.webpack.config.js). Confit will attempt to overwrite the contents files the next time `yo confit` is run, so make sure any modifications are committed to source control first.
 - `npm test:browser` can be extended by modifying [config/testBrowser/protractor.conf.js](config/testBrowser/protractor.conf.js). This task uses Protractor to run Jasmine2 test specs (located in `src/modules/**/browserTest/`) against the development web server URL.
 - `npm test:unit` can be extended by modifying [config/testUnit/karma.conf.js](config/testUnit/karma.conf.js) and [config/testUnit/karma.common.js](config/testUnit/karma.common.js). [config/testUnit/test.files.js](config/testUnit/test.files.js) is generated from the entry points in the Confit configuration. It is **best** to modify the entry points in [confit.json](confit.json) then re-run `yo confit`.
