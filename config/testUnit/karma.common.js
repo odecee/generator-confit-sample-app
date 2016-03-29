@@ -45,7 +45,6 @@ var karmaConfig = {
   ],
 
   preprocessors: {
-    'src/modules//**/*.(js)': ['coverage'],
     'config/testUnit/test.files.js': ['webpack']
   },
 
@@ -67,16 +66,25 @@ var karmaConfig = {
     outputDir: 'reports/unit/'
   },
 
+
+
   webpack: {
     module: {
-      postLoaders: [
-        // instrument only testing sources with Istanbul
+      preLoaders: [
+        // instrument only testing sources
         {
           test: /src\/modules\/.*\.(js)$/,
-          loader: 'istanbul-instrumenter-loader',
+          loader: 'isparta-instrumenter-loader',
           exclude: [
             /node_modules|unitTest\/|browserTest\//
-          ]
+          ],
+          query: {
+  'babel': {
+    'presets': [
+      'es2015'
+    ]
+  }
+}
         }
       ],
       loaders: webpackConfig.module.loaders

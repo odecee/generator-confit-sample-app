@@ -8,7 +8,7 @@
 <!--[]-->
 
 <!--[RM_INSTALL]-->
-##Install
+## Install
 
     npm install sample-app
 
@@ -16,22 +16,24 @@
 <!--[]-->
 
 <!--[RM_DEVELOPMENT_TASKS]-->
-##Development Tasks
+## Development Tasks
 
-- `npm run build`: Generate production build into [dist/](dist/) folder
-- `npm run build:dev`: Create a development build using Webpack
-- `npm run build:prod`: Create a production build using Webpack
-- `npm run build:serve`: Generate production build and serve on **https://localhost:3000**
-- `npm run dev`: Run project in development mode (verify code, create dev build into dev/ folder, serve on **https://localhost:3000**, watch for changes and reload the browser automatically)
-- `npm run serve:prod`: Run a production server using grunt-connect on **https://localhost:3000**
-- `npm start`: Alias for `npm run dev` task
-- `npm test`: Alias for `npm run test:unit` task
-- `npm run test:browser`: Run browser tests against the *development* web server (the development server **must** be running)
-- `npm run test:unit`: Run unit tests whenever JS code changes, with code coverage
-- `npm run test:unit:debug`: Run unit tests in a browser to make debugging easier (no code coverage)
-- `npm run test:unit:once`: Run unit tests once
-- `npm run verify`: Verify JS & CSS code style and syntax
-- `npm run verify:watch`: Run verify task whenever JS or CSS code changes
+Command | Description
+:------ | :----------
+<pre>npm run build</pre> | Generate production build into [dist/](dist/) folder
+<pre>npm run build:dev</pre> | Create a development build using Webpack<ul><li>Sourcemaps</li><li>Hot reloading of source code</li></ul>
+<pre>npm run build:prod</pre> | Create a production build using Webpack<ul><li>Minifies source code</li><li>Sourcemaps</li><li>Dead code removal</li><li>Hashes added to file names for cache-busting</li></ul>
+<pre>npm run build:serve</pre> | Generate production build and serve on **https://localhost:3000**'
+<pre>npm run dev</pre> | Run project in development mode (verify code, create dev build into dev/ folder, serve on **https://localhost:3000**, watch for changes and reload the browser automatically)
+<pre>npm run serve:prod</pre> | Runs a production server using `grunt-connect` on **https://localhost:3000**<ul><li>HTTP or HTTPS</li><li>Port can be overridden on command line: `-- -port=1234`</li><li>Browser can be opened to a specific path via command line: `-- -url=sub/path`</li></ul>
+<pre>npm start</pre> | Alias for `npm run dev` task
+<pre>npm test</pre> | Alias for `npm run test:unit` task
+<pre>npm run test:browser</pre> | Run browser tests against the *development* web server (the development server **must** be running)
+<pre>npm run test:unit</pre> | Run unit tests whenever JS source or tests change<ul><li>Uses Karma and Jasmine 2</li><li>Code coverage</li><li>Runs continuously (best to run in a separate window)</li></ul>
+<pre>npm run test:unit:debug</pre> | Run unit tests in a browser to make debugging easier<ul><li>no code coverage to make it easier to read source code</li></ul>
+<pre>npm run test:unit:once</pre> | Run unit tests once
+<pre>npm run verify</pre> | Verify JS & CSS code style and syntax<ul><li>Verifies source *and test code* (unlike Webpack loaders)</li></ul>
+<pre>npm run verify:watch</pre> | Runs verify task whenever JS or CSS code is changed
 
 
 
@@ -47,7 +49,7 @@
 <!--[]-->
 
 <!--[RM_CHANGING_BUILD_TOOL_CONFIG]-->
-##Changing build-tool configuration
+## Changing build-tool configuration
 
 There are 3 ways you can change the build-tool configuration for this project:
 

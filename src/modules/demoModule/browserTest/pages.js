@@ -1,6 +1,6 @@
 'use strict';
 
-var Page1 = function() {
+function page1() {
   var page = {
     get: function() {
       browser.get('/');
@@ -10,13 +10,18 @@ var Page1 = function() {
     body: element(by.css('body')),
     heading: element(by.css('h1')),
     logo: element(by.css('img')),
-    linkToPage2: element(by.css('a'))
+    linkToPage2: element(by.css('a')),
+    cssType: function() {
+      // To get the content of a pseudo element, you need to do this:
+      var selector = '.css-type';
+      return browser.executeScript('return window.getComputedStyle(document.querySelector("' + selector + '"), ":after").content.replace(/"/g, "")');
+    }
   };
   return page;
-};
+}
 
 
-var Page2 = function() {
+function page2() {
   var page = {
     get: function() {
       browser.get('/page2');
@@ -33,6 +38,6 @@ var Page2 = function() {
 
 
 module.exports = {
-  Page1: Page1,
-  Page2: Page2
+  Page1: page1,
+  Page2: page2
 };
