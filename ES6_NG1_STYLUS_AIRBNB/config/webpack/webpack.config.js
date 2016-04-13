@@ -33,7 +33,13 @@ var config = {
     modulesDirectories: ['node_modules', 'bower_components'],
 
     // https://webpack.github.io/docs/configuration.html#resolve-extensions
-    extensions: ['','.webpack.js','.web.js','.js','.js']
+    extensions: [
+      '',
+      '.webpack.js',
+      '.web.js',
+      '.js',
+      '.js'
+    ]
   },
 
   // Output stats to provide more feedback when things go wrong:
@@ -46,10 +52,17 @@ var config = {
 /* **/
 
 /** Entry point START **/
-config.entry = {'sampleApp':['./modules/demoModule/app.js']};
+config.entry = {
+  'sampleApp': [
+    './modules/demoModule/app.js'
+  ]
+};
 
 // (Re)create the config.entry.vendor entryPoint
-config.entry.vendor = ['angular','angular-route'];
+config.entry.vendor = [
+  'angular',
+  'angular-route'
+];
 
 // Create a common chunk for the vendor modules (https://webpack.github.io/docs/list-of-plugins.html#2-explicit-vendor-chunk)
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({

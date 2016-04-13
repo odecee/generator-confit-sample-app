@@ -1,7 +1,8 @@
 'use strict';
 
+// START_CONFIT_GENERATED_CONTENT
 
-exports.config = {
+var config = {
   // ChromeDriver location is used to help the standalone Selenium Server
   // find the chromedriver binary. This will be passed to the Selenium jar as
   // the system property webdriver.chrome.driver. If null, Selenium will
@@ -92,3 +93,6 @@ exports.config = {
     print: function() {}
   }
 };
+// END_CONFIT_GENERATED_CONTENT
+
+exports.config = config;

@@ -79,12 +79,12 @@ var karmaConfig = {
             /node_modules|unitTest\/|browserTest\//
           ],
           query: {
-  'babel': {
-    'presets': [
-      'es2015'
-    ]
-  }
-}
+            'babel': {
+              'presets': [
+                'es2015'
+              ]
+            }
+          }
         }
       ],
       loaders: webpackConfig.module.loaders
