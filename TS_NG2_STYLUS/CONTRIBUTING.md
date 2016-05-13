@@ -1,7 +1,7 @@
 <!--[CN_HEADING]-->
 # Contributing
 
-Welcome! This document explains how you can contribute to making **es-6-ng-1-stylus-airbnb** even better.
+Welcome! This document explains how you can contribute to making **ts-ng-2-stylus** even better.
 
 
 <!--[]-->
@@ -138,9 +138,7 @@ Command | Description
 
 Command | Description
 :------ | :----------
-<pre>npm run release</pre> | Create production version of software, verify code, run unit tests. This task is designed to be run before
-the `semantic-release` task.
-<ul><li>Requires Node 4.x (`semantic-release-cli` will not work on Node 5.x as of March 2015)</li><li>Run `semantic-release-cli setup` once you have a remote repository. See https://github.com/semantic-release/cli for details</li><li>Generates release notes against each release in the "Releases" section in GitHub</li><li>Publishes package to NPM</li><li>Integrates with Travis CI</li></ul>
+<pre>npm run release</pre> | Create production version of software, verify code, run unit tests.<ul><li>Define another script-task called `postrelease` to define the rest of your release process</li></ul>
 
 
 

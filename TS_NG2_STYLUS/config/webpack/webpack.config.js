@@ -38,7 +38,7 @@ var config = {
       '.webpack.js',
       '.web.js',
       '.js',
-      '.js'
+      '.ts'
     ]
   },
 
@@ -54,14 +54,21 @@ var config = {
 /** Entry point START **/
 config.entry = {
   'sampleApp': [
-    './modules/demoModule/app.js'
+    './modules/demoModule/app.ts'
   ]
 };
 
 // (Re)create the config.entry.vendor entryPoint
 config.entry.vendor = [
-  'angular',
-  'angular-route'
+  './polyfills.ts',
+  'core-js',
+  'zone.js',
+  'rxjs',
+  'angular2/platform/browser',
+  'angular2/platform/common_dom',
+  'angular2/core',
+  'angular2/common',
+  'angular2/router'
 ];
 
 // Create a common chunk for the vendor modules (https://webpack.github.io/docs/list-of-plugins.html#2-explicit-vendor-chunk)
@@ -74,18 +81,14 @@ config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 
 /** JS START */
 
+
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+
 config.module.loaders.push({
-  test: /src\/.*\.(js)$/,
-  loader: 'babel-loader',
-  exclude: ['node_modules'],    // There should be no need to exclude unit or browser tests because they should NOT be part of the source code dependency tree
-  query: {
-    // https://github.com/babel/babel-loader#options
-    cacheDirectory: true,
-    presets: ['es2015'],
-    // Generate the "default" export when using Babel 6: http://stackoverflow.com/questions/34736771/webpack-umd-library-return-object-default
-    plugins: ['add-module-exports']
-  }
+  test: /src\/.*\.(ts)$/,
+  loader: 'awesome-typescript-loader'
 });
+
 /* **/
 
 /** TEST UNIT START */

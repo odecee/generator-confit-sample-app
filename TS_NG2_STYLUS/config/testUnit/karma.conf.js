@@ -20,8 +20,8 @@ function getConfitConfig(config) {
 
   if (debugMode) {
     // Remove the coverage reporter, otherwise it runs against the instrumented code, making it difficult to debug the code.
-    commonConfig.webpack.module.preLoaders = commonConfig.webpack.module.preLoaders.filter(function (loader) {
-      return (loader.loader.indexOf('isparta-instrumenter-loader') === -1);
+    commonConfig.webpack.module.postLoaders = commonConfig.webpack.module.postLoaders.filter(function (loader) {
+      return (loader.loader.indexOf('istanbul-instrumenter-loader') === -1);
     });
   }
 

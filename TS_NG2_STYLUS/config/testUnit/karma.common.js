@@ -3,7 +3,7 @@
 
 // START_CONFIT_GENERATED_CONTENT
 var DefinePlugin = require('webpack').DefinePlugin;   // Needed to pass the testFilesRegEx to test.files.js
-var testFilesRegEx = /unitTest\/.*spec\.(js)$/;
+var testFilesRegEx = /unitTest\/.*spec\.(ts)$/;
 
 // Customise the testFilesRegEx to filter which files to test, if desired.
 // E.g.
@@ -11,6 +11,7 @@ var testFilesRegEx = /unitTest\/.*spec\.(js)$/;
 //   testFilesRegEx = ...
 // }
 // END_CONFIT_GENERATED_CONTENT
+
 
 // START_CONFIT_GENERATED_CONTENT
 // We want to re-use the loaders from the dev.webpack.config
@@ -80,21 +81,14 @@ var karmaConfig = {
 
   webpack: {
     module: {
-      preLoaders: [
+      postLoaders: [
         // instrument only testing sources
         {
-          test: /src\/modules\/.*\.(js)$/,
-          loader: 'isparta-instrumenter-loader',
+          test: /src\/modules\/.*\.(ts)$/,
+          loader: 'istanbul-instrumenter-loader',
           exclude: [
             /node_modules|unitTest\/|browserTest\//
-          ],
-          query: {
-            'babel': {
-              'presets': [
-                'es2015'
-              ]
-            }
-          }
+          ]
         }
       ],
       loaders: webpackConfig.module.loaders

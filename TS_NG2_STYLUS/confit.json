@@ -1,14 +1,13 @@
 {
   "generator-confit": {
     "app": {
-      "buildProfile": "Latest",
-      "license": "MIT",
-      "copyrightOwner": "Brett Uglow",
+      "_version": "2737946baf689a3448fd973acac152906b10af1c",
       "browserSupport": [
         "latest",
         "latest2"
       ],
-      "_version": "2737946baf689a3448fd973acac152906b10af1c"
+      "buildProfile": "Latest",
+      "license": "UNLICENSED"
     },
     "paths": {
       "_version": "a7fbbf6a129b3b6ac4b325b3b9f51bbbb4a398b4",
@@ -39,72 +38,82 @@
     },
     "buildAssets": {},
     "buildCSS": {
-      "sourceFormat": "stylus",
+      "_version": "51acf34bcc4ca869a9f3ed932f4b0808a6fd4b37",
       "autoprefixer": true,
-      "_version": "51acf34bcc4ca869a9f3ed932f4b0808a6fd4b37"
+      "sourceFormat": "stylus"
     },
     "buildJS": {
       "_version": "7ecf24894a3d1dd6be5ff8acc76fdc2da2aba089",
       "framework": [
-        "AngularJS 1.x"
+        "AngularJS 2.x"
       ],
       "frameworkScripts": [
-        "angular"
+        "core-js",
+        "zone.js",
+        "rxjs",
+        "angular2/platform/browser",
+        "angular2/platform/common_dom",
+        "angular2/core",
+        "angular2/common"
       ],
       "outputFormat": "ES5",
-      "sourceFormat": "ES6",
+      "sourceFormat": "TypeScript",
       "vendorScripts": [
-        "angular-route"
+        "angular2/router"
       ]
     },
     "buildHTML": {
-      "extension": ".html",
-      "_version": "3044ad9ab5bb860ddacfc268b5e03fe7f2948361"
+      "_version": "3044ad9ab5bb860ddacfc268b5e03fe7f2948361",
+      "extension": ".html"
     },
     "build": {},
     "entryPoint": {
+      "_version": "a5743aa6ec32330496ed3f9a4215a456239e5639",
       "entryPoints": {
         "sampleApp": [
-          "./modules/demoModule/app.js"
+          "./modules/demoModule/app.ts"
         ]
-      },
-      "_version": "a5743aa6ec32330496ed3f9a4215a456239e5639"
+      }
     },
     "serverDev": {
-      "port": 3000,
+      "_version": "db06861d68613ebfe14a49745c03783c05d9310a",
       "hostname": "localhost",
-      "protocol": "https",
-      "_version": "db06861d68613ebfe14a49745c03783c05d9310a"
+      "port": 3000,
+      "protocol": "https"
     },
     "serverProd": {
-      "port": 3000,
+      "_version": "4dbbaaa4d00c979746568aa32ef21425e2fe560d",
       "hostname": "localhost",
-      "protocol": "https",
-      "_version": "4dbbaaa4d00c979746568aa32ef21425e2fe560d"
+      "port": 3000,
+      "protocol": "https"
     },
     "testUnit": {
       "_version": "de2fb819f5057b6f8c9a86d042efc711588a3e0c",
       "testDependencies": [
-        "angular",
-        "angular-mocks",
-        "angular-route"
+        "core-js",
+        "ts-helpers",
+        "zone.js/dist/zone",
+        "zone.js/dist/long-stack-trace-zone",
+        "zone.js/dist/jasmine-patch",
+        "zone.js/dist/async-test",
+        "rxjs"
       ]
     },
     "testBrowser": {},
     "verify": {
-      "jsCodingStandard": "AirBnB",
-      "_version": "9ecb0d40688a5dd4c56404f8c1e647e1ec86f934"
+      "_version": "9ecb0d40688a5dd4c56404f8c1e647e1ec86f934",
+      "jsCodingStandard": "TypeScript"
+    },
+    "release": {
+      "_version": "56bbc396bc335ba0a6b6da908998fd650277086a",
+      "commitMessageFormat": "Conventional",
+      "repositoryType": "Other",
+      "useSemantic": false
     },
     "sampleApp": {
       "_version": "b2ed6d3c5d23eb5dea9ace37dd16171a6b666941",
       "createSampleApp": true
     },
-    "zzfinish": {},
-    "release": {
-      "repositoryType": "GitHub",
-      "useSemantic": true,
-      "commitMessageFormat": "Conventional",
-      "_version": "56bbc396bc335ba0a6b6da908998fd650277086a"
-    }
+    "zzfinish": {}
   }
 }

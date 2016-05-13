@@ -12,6 +12,6 @@ require('angular-route');
 // Don't load any source code! The unit tests are responsible for loading the code-under-test.
 // Includes the *.spec.<ext> files in the unitTest directory. The '../../' is the relative path from where
 // this file is (config/testUnit/) to where the source folders are.
-var testsContext = require.context('../../src/modules', true, /unitTest\/.*spec\.(js)$/);
+var testsContext = require.context('../../src/modules', true, __karmaTestSpec);
 testsContext.keys().forEach(testsContext);
 // END_CONFIT_GENERATED_CONTENT

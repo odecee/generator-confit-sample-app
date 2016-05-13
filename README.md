@@ -8,3 +8,9 @@
   - MIT Licence
   - Semantic releasing
   - Conventional commit messages
+- [Sample App 2](TS_NG2_STYLUS)
+  - TypeScript source code format
+  - Angular 2.x
+  - Stylus CSS format
+  - MIT Licence
+  - Conventional commit messages
