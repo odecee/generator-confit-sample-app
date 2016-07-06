@@ -112,7 +112,11 @@ Command | Description
 
 Command | Description
 :------ | :----------
-<pre>npm run verify</pre> | Verify JS & CSS code style and syntax<ul><li>Verifies source *and test code* (unlike Webpack loaders)</li></ul>
+<pre>npm run verify</pre> | Verify code style and syntax<ul><li>Verifies source *and test code* aginst customisable rules (unlike Webpack loaders)</li></ul>
+<pre>npm run verify:css</pre> | Verify CSS code style and syntax
+<pre>npm run verify:css:watch</pre> | Verify CSS code style and syntax and watch files for changes
+<pre>npm run verify:js</pre> | Verify Typescript code style and syntax
+<pre>npm run verify:js:watch</pre> | Verify Typescript code style and syntax and watch files for changes
 <pre>npm run verify:watch</pre> | Runs verify task whenever JS or CSS code is changed
 
 

@@ -5,7 +5,18 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-var basePath = process.cwd() + '/';
+var helpers = require('./webpackHelpers');
+var basePath = process.cwd() + path.sep;
+
+// https://webpack.github.io/docs/configuration.html#resolve-extensions
+var jsExtensions = [
+      '',
+      '.webpack.js',
+      '.web.js',
+      '.js',
+      '.ts'
+    ];
+var moduleDirectories = ['node_modules', 'bower_components'];
 
 var config = {
   /**
@@ -14,7 +25,7 @@ var config = {
    * Type of sourcemap to use per build type
    */
   devtool: 'source-map',
-  context: basePath + 'src',  // The baseDir for resolving the entry option and the HTML-Webpack-Plugin
+  context: path.join(basePath, 'src'),  // The baseDir for resolving the entry option and the HTML-Webpack-Plugin
   output: {
     filename: 'js/[name].[hash:8].js',
     chunkFilename: 'js/[id].[chunkhash:8].js',  // The name for non-entry chunks
@@ -30,16 +41,8 @@ var config = {
 
   resolve: {
     // https://webpack.github.io/docs/configuration.html#resolve-modulesdirectories
-    modulesDirectories: ['node_modules', 'bower_components'],
-
-    // https://webpack.github.io/docs/configuration.html#resolve-extensions
-    extensions: [
-      '',
-      '.webpack.js',
-      '.web.js',
-      '.js',
-      '.ts'
-    ]
+    modulesDirectories: moduleDirectories,
+    extensions: jsExtensions
   },
 
   // Output stats to provide more feedback when things go wrong:
@@ -72,38 +75,48 @@ config.entry.vendor = [
 ];
 
 // Create a common chunk for the vendor modules (https://webpack.github.io/docs/list-of-plugins.html#2-explicit-vendor-chunk)
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+var commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor',
   filename: 'vendor/[name].[hash:8].js',
   minChunks: Infinity
-}));
+});
+config.plugins.push(commonsChunkPlugin);
+
 /** Entry point END **/
 
 /** JS START */
 
 
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+// Not used yet, but can speed up compile time for TypeScript AND Babel
+//const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
-config.module.loaders.push({
-  test: /src\/.*\.(ts)$/,
+var srcLoader = {
+  test: helpers.pathRegEx(/src\/.*\.(ts)$/),
   loader: 'awesome-typescript-loader'
-});
+};
 
+config.module.loaders.push(srcLoader);
 /* **/
 
 /** TEST UNIT START */
 /* **/
 
 /** Assets START **/
-config.module.loaders.push({
-  test: /assets\/font\/.*\.(eot|otf|svg|ttf|woff|woff2)$/,
-  loader: 'file-loader?name=/assets/[1]/font/[name].[hash:8].[ext]&regExp=modules/(.*)/assets/font/.*'
-});
+// Output module-assets to: /assets/<moduleName>/img|font/<fileName>
+// Other assets (such as assets in Bootstrap) will need their own loaders
+var fontLoader = {
+  $$name: 'fontLoader',
+  test: helpers.pathRegEx(/assets\/font\/.*\.(eot|otf|svg|ttf|woff|woff2)$/),
+  loader: 'file-loader?name=/assets/[1]/font/[2].[hash:8].[ext]&regExp=' + helpers.pathRegEx('modules/(.*)/assets/font/(.+?)(.[^.]*$|$)')
+};
+config.module.loaders.push(fontLoader);
 
-config.module.loaders.push({
-  test: /assets\/img\/.*\.(gif|ico|jpg|png|svg)$/,
-  loader: 'file-loader?name=/assets/[1]/img/[name].[hash:8].[ext]&regExp=modules/(.*)/assets/img/.*'
-});
+var imageLoader = {
+  $$name: 'imageLoader',
+  test: helpers.pathRegEx(/assets\/img\/.*\.(gif|ico|jpg|png|svg)$/),
+  loader: 'file-loader?name=/assets/[1]/img/[2].[hash:8].[ext]&regExp=' + helpers.pathRegEx('modules/(.*)/assets/img/(.+?)(.[^.]*$|$)')
+};
+config.module.loaders.push(imageLoader);
 /* **/
 
 /** CSS START **/
@@ -111,27 +124,29 @@ var autoprefixer = require('autoprefixer');
 config.postcss = [
   autoprefixer({
     browsers: [
-      'last 1 version',
-      'last 2 versions'
+      'last 1 version'
     ]
   })
 ];
-config.module.loaders.push({
-  test: /\.(styl)/,
+var cssLoader = {
+  test: helpers.pathRegEx(/\.(styl)/),
   loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader')
-});
+};
+config.module.loaders.push(cssLoader);
+
 // For any entry-point CSS file definitions, extract them as text files as well
-config.plugins.push(new ExtractTextPlugin('css/[name].[contenthash:8].css', { allChunks: true }));
+var extractCSSTextPlugin = new ExtractTextPlugin('css/[name].[contenthash:8].css', { allChunks: true });
+config.plugins.push(extractCSSTextPlugin);
 /* **/
 
 /** HTML START */
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-config.module.loaders.push({
+var htmlLoader = {
   test: /\.html$/,
   loader: 'html-loader',
   exclude: /index-template.html$/
-});
+};
+config.module.loaders.push(htmlLoader);
 
 // Configuration that works with Angular 2  :(
 config.htmlLoader = {
@@ -142,13 +157,14 @@ config.htmlLoader = {
   customAttrAssign: [ /\)?\]?=/ ]
 };
 
-config.plugins.push(
-  new HtmlWebpackPlugin({
-    filename: 'index.html',
-    inject: false,      // We want full control over where we inject the CSS and JS files
-    template: basePath + 'src/index-template.html'
-  })
-);
+
+var indexHtmlPlugin = new HtmlWebpackPlugin({
+  filename: 'index.html',
+  inject: false,      // We want full control over where we inject the CSS and JS files
+  template: path.join(basePath + 'src/index-template.html')
+});
+
+config.plugins.push(indexHtmlPlugin);
 /* **/
 
 /** Server - DEV - START */
@@ -173,6 +189,9 @@ config.devServer = {
 };
 /* **/
 
+
+// To remove content hashes, call helpers.removeHash(config.prop.parent, propertyName, regExMatcher (optional));
+// For example helpers.removeHash(config.output, 'fileName', /\[(contentHash|hash).*?\]/)
 // END_CONFIT_GENERATED_CONTENT
 
 module.exports = config;

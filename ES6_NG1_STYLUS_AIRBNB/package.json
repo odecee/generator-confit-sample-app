@@ -41,7 +41,8 @@
       "config": "config/release/commitMessageConfig.js"
     },
     "ghooks": {
-      "commit-msg": "./node_modules/cz-customizable-ghooks/index.js $2"
+      "commit-msg": "./node_modules/cz-customizable-ghooks/index.js $2",
+      "pre-push": "npm-run-all verify test:unit:once --silent"
     }
   },
   "dependencies": {
