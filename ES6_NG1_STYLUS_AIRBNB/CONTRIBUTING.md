@@ -112,7 +112,11 @@ Command | Description
 
 Command | Description
 :------ | :----------
-<pre>npm run verify</pre> | Verify JS & CSS code style and syntax<ul><li>Verifies source *and test code* (unlike Webpack loaders)</li></ul>
+<pre>npm run verify</pre> | Verify code style and syntax<ul><li>Verifies source *and test code* aginst customisable rules (unlike Webpack loaders)</li></ul>
+<pre>npm run verify:css</pre> | Verify CSS code style and syntax
+<pre>npm run verify:css:watch</pre> | Verify CSS code style and syntax and watch files for changes
+<pre>npm run verify:js</pre> | Verify Javascript code style and syntax
+<pre>npm run verify:js:watch</pre> | Verify Javascript code style and syntax and watch files for changes
 <pre>npm run verify:watch</pre> | Runs verify task whenever JS or CSS code is changed
 
 
@@ -140,7 +144,7 @@ Command | Description
 :------ | :----------
 <pre>npm run release</pre> | Create production version of software, verify code, run unit tests. This task is designed to be run before
 the `semantic-release` task.
-<ul><li>Requires Node 4.x (`semantic-release-cli` will not work on Node 5.x as of March 2015)</li><li>Run `semantic-release-cli setup` once you have a remote repository. See https://github.com/semantic-release/cli for details</li><li>Generates release notes against each release in the "Releases" section in GitHub</li><li>Publishes package to NPM</li><li>Integrates with Travis CI</li></ul>
+<ul><li>Run `semantic-release-cli setup` once you have a remote repository. See https://github.com/semantic-release/cli for details</li><li>Generates release notes against each release in the "Releases" section in GitHub</li><li>Publishes package to NPM</li><li>Integrates with Travis CI</li></ul>
 
 
 

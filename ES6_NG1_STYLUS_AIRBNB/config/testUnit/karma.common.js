@@ -12,6 +12,7 @@ var testFilesRegEx = /unitTest\/.*spec\.(js)$/;
 // }
 // END_CONFIT_GENERATED_CONTENT
 
+
 // START_CONFIT_GENERATED_CONTENT
 // We want to re-use the loaders from the dev.webpack.config
 var webpackConfig = require('./../webpack/dev.webpack.config.js');
@@ -46,7 +47,8 @@ var karmaConfig = {
     'karma-chrome-launcher',
     require('karma-webpack'),
     'karma-spec-reporter',
-    'karma-sourcemap-loader'
+    'karma-sourcemap-loader',
+    'karma-threshold-reporter'
   ],
 
   files: [
@@ -59,7 +61,7 @@ var karmaConfig = {
   },
 
 
-  reporters: ['progress', 'junit', 'coverage'],
+  reporters: ['progress', 'junit', 'coverage', 'threshold'],
 
   coverageReporter: {
     dir: 'reports/coverage',
@@ -74,6 +76,13 @@ var karmaConfig = {
 
   junitReporter: {
     outputDir: 'reports/unit/'
+  },
+
+  thresholdReporter: {
+    statements: 80,
+    branches: 80,
+    functions: 80,
+    lines: 80
   },
 
 

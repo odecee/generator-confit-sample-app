@@ -1,4 +1,5 @@
 'use strict';
+// This file is run inside a Webpack context, which allows it to use require.context() to get a list of files to include at run time
 
 // START_CONFIT_GENERATED_CONTENT
 // Polyfill required for PhantomJS

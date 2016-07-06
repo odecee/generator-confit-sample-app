@@ -7,4 +7,4 @@ config/*
 
 
 # Sample project
-src/modules/**/demoModule/*
+src/modules/demoModule/*
