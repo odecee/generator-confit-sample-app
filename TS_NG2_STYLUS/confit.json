@@ -45,20 +45,10 @@
       "framework": [
         "AngularJS 2.x"
       ],
-      "frameworkScripts": [
-        "core-js",
-        "zone.js",
-        "rxjs",
-        "angular2/platform/browser",
-        "angular2/platform/common_dom",
-        "angular2/core",
-        "angular2/common"
-      ],
+      "frameworkScripts": [],
       "outputFormat": "ES5",
       "sourceFormat": "TypeScript",
-      "vendorScripts": [
-        "angular2/router"
-      ]
+      "vendorScripts": []
     },
     "buildHTML": {
       "_version": "3044ad9ab5bb860ddacfc268b5e03fe7f2948361",
@@ -68,9 +58,7 @@
     "entryPoint": {
       "_version": "a5743aa6ec32330496ed3f9a4215a456239e5639",
       "entryPoints": {
-        "sampleApp": [
-          "./modules/demoModule/app.ts"
-        ]
+        "sampleApp": []
       }
     },
     "serverDev": {
@@ -87,15 +75,7 @@
     },
     "testUnit": {
       "_version": "62de2b61885aea97ebcd68f2dd4df1842d2ef842",
-      "testDependencies": [
-        "core-js",
-        "ts-helpers",
-        "zone.js/dist/zone",
-        "zone.js/dist/long-stack-trace-zone",
-        "zone.js/dist/jasmine-patch",
-        "zone.js/dist/async-test",
-        "rxjs"
-      ]
+      "testDependencies": []
     },
     "testBrowser": {},
     "verify": {

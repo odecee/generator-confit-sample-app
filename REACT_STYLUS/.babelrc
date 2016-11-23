@@ -1,0 +1,26 @@
+{
+
+  "env": {
+    "test": {
+      "plugins": [
+        ["istanbul", {
+          "exclude": [
+            "**/unitTest/*.spec.(js|jsx)"
+          ]
+        }]
+      ]
+    }
+  },
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "react-app"
+  ],
+  "plugins": [
+    "react-hot-loader/babel"
+  ]
+}

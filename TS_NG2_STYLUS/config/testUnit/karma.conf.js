@@ -3,6 +3,7 @@
 
 // START_CONFIT_GENERATED_CONTENT
 var commonConfig = require('./karma.common.js');
+var webpackHelpers = require('../webpack/webpackHelpers.js')();
 var debugMode = process.argv.indexOf('--debug') > -1;
 var noCoverage = process.argv.indexOf('--no-coverage') > -1;
 
@@ -20,9 +21,15 @@ function getConfitConfig(config) {
 
 
   if (debugMode) {
+    
     // Remove the coverage reporter, otherwise it runs against the instrumented code, making it difficult to debug the code.
-    commonConfig.webpack.module.postLoaders = commonConfig.webpack.module.postLoaders.filter(function (loader) {
-      return (loader.loader.indexOf('istanbul-instrumenter-loader') === -1);
+    commonConfig.webpack.module.rules = commonConfig.webpack.module.rules.filter(function (rule) {
+      return !webpackHelpers.hasLoader(rule, 'istanbul-instrumenter-loader');
+    });
+    
+    // No point checking threshold if we removing the the coverage tool
+    commonConfig.reporters = commonConfig.reporters.filter(function(reporter) {
+      return reporter !== 'threshold' || reporter !== 'coverage';
     });
   }
 

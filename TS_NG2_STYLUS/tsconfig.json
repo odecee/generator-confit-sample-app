@@ -2,24 +2,41 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src/",
+    "paths": {
+    },
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "types": [
+      
+      "jasmine",
+      "node",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack"
+    ]
   },
   "exclude": [
-    "node_modules",
-    "typings/main.d.ts",
-    "typings/main"
+    "node_modules"
   ],
-  "filesGlob": [
-    "./src/**/*.ts",
-    "!./node_modules/**/*.ts",
-    "typings/browser.d.ts"
+  "include": [
+    "./src/**/*.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "resolveGlobs": true,
-    "forkChecker": true
+    "forkChecker": true,
+    "useWebpackText": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
