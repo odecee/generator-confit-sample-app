@@ -22,7 +22,7 @@ let options = {
 
 // If we are running inside Travis, send the token
 if (process.env.GH_TOKEN) {
-  options.repo = 'https://' + process.env.GH_TOKEN + '@github.com/undefined';
+  options.repo = 'https://' + process.env.GH_TOKEN + '@github.com/entity/repo';
 
   // Add some user information for the gh-pages commit
   options.user = {

@@ -11,8 +11,8 @@
 [![NPM Version](https://img.shields.io/npm/v/es-6-ng-1-stylus-airbnb.svg?style=flat-square)](http://npm.im/es-6-ng-1-stylus-airbnb)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Coverage Status](https://coveralls.io/repos/github/entity/repo/badge.svg?branch=master)](https://coveralls.io/github/entity/repo?branch=master)
-[![Dependencies status](https://david-dm.org//status.svg?theme=shields.io)](https://david-dm.org/#info=dependencies)
-[![Dev-dependencies status](https://david-dm.org//dev-status.svg?theme=shields.io)](https://david-dm.org/#info=devDependencies)
+[![Dependencies status](https://david-dm.org/entity/repo/status.svg?theme=shields.io)](https://david-dm.org/entity/repo#info=dependencies)
+[![Dev-dependencies status](https://david-dm.org/entity/repo/dev-status.svg?theme=shields.io)](https://david-dm.org/entity/repo#info=devDependencies)
 
 
 <!--[]-->

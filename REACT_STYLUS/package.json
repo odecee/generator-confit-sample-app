@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://example.com/entity/repo"
+    "url": "https://github.com/entity/repo"
   },
   "scripts": {
     "pre-release": "npm-run-all verify test:coverage build test:system",

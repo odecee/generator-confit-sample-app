@@ -10,8 +10,8 @@
 <!--[RM_BADGES]-->
 [![NPM Version](https://img.shields.io/npm/v/ts-ng-2-stylus.svg?style=flat-square)](http://npm.im/ts-ng-2-stylus)
 [![Coverage Status](https://coveralls.io/repos/github/entity/repo/badge.svg?branch=master)](https://coveralls.io/github/entity/repo?branch=master)
-[![Dependencies status](https://david-dm.org//status.svg?theme=shields.io)](https://david-dm.org/#info=dependencies)
-[![Dev-dependencies status](https://david-dm.org//dev-status.svg?theme=shields.io)](https://david-dm.org/#info=devDependencies)
+[![Dependencies status](https://david-dm.org/entity/repo/status.svg?theme=shields.io)](https://david-dm.org/entity/repo#info=dependencies)
+[![Dev-dependencies status](https://david-dm.org/entity/repo/dev-status.svg?theme=shields.io)](https://david-dm.org/entity/repo#info=devDependencies)
 
 
 <!--[]-->
