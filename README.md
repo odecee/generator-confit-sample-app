@@ -14,3 +14,8 @@
   - Stylus CSS format
   - MIT Licence
   - Conventional commit messages
+- [Sample App 3](REACT_STYLUS)
+  - ES6 source code format
+  - React 15.x
+  - Stylus CSS format
+  - MIT Licence
