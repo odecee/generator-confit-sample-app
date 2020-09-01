@@ -101,7 +101,7 @@
     "react-addons-test-utils": "15.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "rimraf": "2.5.4",
-    "serve": "1.4.0",
+    "serve": "11.3.2",
     "serve-https": "1.5.3",
     "style-loader": "0.13.1",
     "stylint": "1.5.6",
